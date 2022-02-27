@@ -513,8 +513,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 4rem;
 }
 
+.h-full {
+  height: 100%;
+}
+
 .max-h-screen {
   max-height: 100vh;
+}
+
+.max-h-full {
+  max-height: 100%;
 }
 
 .w-16 {
@@ -617,6 +625,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-transparent {
+  background-color: transparent;
+}
+
 .p-4 {
   padding: 1rem;
 }
@@ -642,6 +654,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .pb-3 {
@@ -819,6 +836,37 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .scrollbar-explorer::-webkit-scrollbar-thumb {
   background-color: #6e6868;
+}
+
+/**
+ * Text editor
+ */
+
+.line-container {
+  counter-reset: lines;
+}
+
+.line-container>div {
+  display: flex;
+}
+
+.line-container>div:before {
+  color: #6f6f6f;
+  counter-increment: lines 1;
+  content: counter(lines);
+  width: 100%;
+  text-align: right;
+  display: inline-block;
+  margin-right: 1em;
+  flex: 0 0 auto;
+}
+
+.no-outline {
+  outline: none !important;
+}
+
+.no-border {
+  border: none !important;
 }
 
 .hover\:bg-editorIndentGuide\.background:hover {

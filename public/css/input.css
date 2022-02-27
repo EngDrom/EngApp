@@ -41,3 +41,31 @@
 .scrollbar-explorer::-webkit-scrollbar-thumb {
     background-color: #6e6868;
 }
+
+/**
+ * Text editor
+ */
+.line-container {
+    counter-reset: lines;
+}
+
+.line-container>div {
+    display: flex;
+}
+.line-container>div:before {
+    color: #6f6f6f;
+    counter-increment: lines 1;
+    content: counter(lines);
+    width: 100%;
+    text-align: right;
+    display: inline-block;
+    margin-right: 1em;
+    flex: 0 0 auto;
+  }
+  
+.no-outline {
+    outline: none !important;
+}
+.no-border {
+    border: none !important;
+}

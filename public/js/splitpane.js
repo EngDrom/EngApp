@@ -5,6 +5,7 @@ function dragElement(element, direction)
     var   md; // remember mouse down info
     const first  = document.getElementById("first");
     const second = document.getElementById("second");
+    element = element.querySelector("#separator").querySelector(".absolute")
 
     element.onmousedown = onMouseDown;
 
