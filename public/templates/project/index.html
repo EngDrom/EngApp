@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EngDrom - Project</title>
+
+    <script src="../../js/splitpane.js"></script>
+    <script src="../../js/file-manager.js"></script>
+    <link href="../../../public/css/output.css" rel="stylesheet">
+</head>
+<body class="dark">
+    <div class="overflow-hidden h-screen flex dark:bg-gray-900 dark:text-gray-300">
+        <div class="w-16 bg-sideBarIcons.background flex flex-col">
+            <div class="group relative cursor-pointer">
+                <div class="absolute h-16 w-[2px] bg-list.activeSelectionIconForeground"></div>
+
+                <div class="text-list.activeSelectionIconForeground w-16 h-16 material-icons p-4" style="font-size: 32px;">code</div>
+                <div class="hidden group-hover:block absolute border border-gray-100 dark:border-gray-700 bg-gray-200 dark:bg-gray-900 p-2 py-1
+                left-[120%] top-[50%] translate-y-[-50%] whitespace-nowrap">Explorer</div>
+            </div>
+            <div class="group relative cursor-pointer">
+                <div class="opacity-40 group-hover:opacity-100 text-list.activeSelectionIconForeground dark:group-hover:text-gray-200 w-16 h-16 material-icons p-4" style="font-size: 32px;">devices</div>
+                <div class="hidden group-hover:block absolute border border-gray-100 dark:border-gray-700 bg-gray-200 dark:bg-gray-900 p-2 py-1
+                left-[120%] top-[50%] translate-y-[-50%] whitespace-nowrap">Preview</div>
+            </div>
+            <div class="flex-1"></div>
+            <div class="group relative cursor-pointer">
+                <div class="opacity-40 group-hover:opacity-100 text-list.activeSelectionIconForeground dark:group-hover:text-gray-200 w-16 h-16 material-icons p-4" style="font-size: 32px;">settings</div>
+                <div class="hidden group-hover:block absolute border border-gray-100 dark:border-gray-700 bg-gray-200 dark:bg-gray-900 p-2 py-1
+                left-[120%] top-[50%] translate-y-[-50%] whitespace-nowrap">User preferences</div>
+            </div>
+        </div>
+
+
+
+        <div class="flex-1 flex" id="splitpane">
+            <div class="bg-menu.background overflow-y-auto max-h-screen scrollbar-explorer" style="width: 40%;" id="first">
+                <!-- File explorer -->
+                <div class="font-medium uppercase px-8 p-4 text-explorer.gray">Explorer</div>
+                
+                <div id="file-container" class="font-light">
+                    <div class="cursor-pointer hidden" id="file-folder">
+                        <div class="flex">
+                            <div class="material-icons px-4 pr-1 pt-[0.125rem]" style="font-size: 24px;" id="icon">chevron_right</div>
+                            <div class="text-xl">Folder</div>
+                        </div>
+
+                        <div id="next">
+                            <div class="cursor-pointer" style="padding-left: 8px;" id="file-folder">
+                                <div class="flex">
+                                    <div class="material-icons px-4 pr-1 pt-[0.125rem]" style="font-size: 24px;" id="icon">chevron_right</div>
+                                    <div class="text-xl">Folder</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FORCE TEXT ICON TAGS -->
+                        <div class="text-sky-600"></div>
+                        <div class="text-orange-500"></div>
+                        <div class="text-yellow-500"></div>
+                        <div class="text-green-700"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-editor.background hover:bg-activityBarBadge.background transition delay-200 duration-300 cursor-w-resize w-2" id="separator" ></div>
+            <div class="bg-editor.background flex-1" id="second" ></div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EngDrom - Open project</title>
+
+    <link href="../../public/css/output.css" rel="stylesheet">
+    <style>
+        /* fallback */
+        @font-face {
+            font-family: 'Material Icons';
+            font-style: normal;
+            font-weight: 400;
+            src: url(../css/icons.woff2) format('woff2');
+        }
+    </style>
+</head>
+<body class="dark">
+    <div class="overflow-hidden h-screen flex bg-menu.background">
+        <div class="w-16 bg-sideBarIcons.background flex flex-col">
+            <div class="group relative cursor-pointer">
+                <div class="absolute h-16 w-[2px] bg-gray-500 dark:bg-gray-50"></div>
+
+                <div class="text-gray-700 dark:text-gray-100 w-16 h-16 material-icons p-4" style="font-size: 32px;">sticky_note_2</div>
+                <div class="hidden group-hover:block absolute border border-gray-100 dark:border-gray-700 bg-gray-200 dark:bg-gray-900 p-2 py-1
+                left-[120%] top-[50%] translate-y-[-50%] whitespace-nowrap">Get started</div>
+            </div>
+            <div class="flex-1"></div>
+            <div class="group relative cursor-pointer">
+                <div class="opacity-40 group-hover:opacity-100 text-list.activeSelectionIconForeground dark:group-hover:text-gray-200 w-16 h-16 material-icons p-4" style="font-size: 32px;">settings</div>
+                <div class="hidden group-hover:block absolute border border-gray-100 dark:border-gray-700 bg-gray-200 dark:bg-gray-900 p-2 py-1
+                left-[120%] top-[50%] translate-y-[-50%] whitespace-nowrap">User preferences</div>
+            </div>
+        </div>
+
+
+
+        <!-- PROJECT PICKER -->
+        <div class="flex-1 overflow-y-scroll scrollbar-editor.background scrollbar-bg-editor.background">
+            <div class="p-10 lg:p-[10rem]">
+                <div class="mb-2 hidden lg:block text-5xl font-medium text-gray-900 dark:text-gray-200">EngDrom</div>
+                <div class="hidden lg:block text-3xl font-medium text-gray-700 dark:text-gray-400">Fast and easy game engine</div>
+
+                <div class="flex mt-10">
+                    <div class="flex-1">
+                        <div class="text-2xl font-light text-gray-800 dark:text-gray-400 pb-3">Recent</div>
+                        <a href="./index.html?project=./" class="text-xl p-2 font-light text-activityBarBadge.background flex cursor-pointer">Default project<div class="cursor-default text-gray-800 dark:text-slate-300 pl-3">~/</div></a>
+                        <div class="text-xl p-2 font-light text-activityBarBadge.background flex cursor-pointer">Project0<div class="cursor-default text-gray-800 dark:text-slate-300 pl-3">~/projects/project0</div></div>
+                        <div class="text-xl p-2 font-light text-activityBarBadge.background flex cursor-pointer">Project0<div class="cursor-default text-gray-800 dark:text-slate-300 pl-3">~/projects/project0</div></div>
+                        <div class="text-xl p-2 font-light text-activityBarBadge.background flex cursor-pointer">Project0<div class="cursor-default text-gray-800 dark:text-slate-300 pl-3">~/projects/project0</div></div>
+                        <div class="text-xl p-2 font-light text-activityBarBadge.background flex cursor-pointer">Project0<div class="cursor-default text-gray-800 dark:text-slate-300 pl-3">~/projects/project0</div></div>
+                        <div class="text-xl p-2 font-light text-activityBarBadge.background flex cursor-pointer">Project0<div class="cursor-default text-gray-800 dark:text-slate-300 pl-3">~/projects/project0</div></div>
+                        <div class="text-xl p-2 font-light text-activityBarBadge.background flex cursor-pointer">Project0<div class="cursor-default text-gray-800 dark:text-slate-300 pl-3">~/projects/project0</div></div>
+                    </div>
+                    <div class="flex-1 text-editor.foreground">
+                        <div class="text-2xl font-light text-gray-800 dark:text-gray-400 pb-3">Create project</div>
+
+                        <div class="w-full p-4 my-3 rounded-md bg-editor.background relative group hover:bg-editorIndentGuide.background cursor-pointer">
+                            <div class="absolute text-activityBarBadge.background top-[50%] translate-y-[-50%] material-icons p-2" style="font-size: 32px;">extension</div>
+                            <div class="pl-16 font-bold text-2xl">2D Game</div>
+                            <div class="pl-16 font-light text-xl">Create a 2D game project with built-in features and configuration</div>
+                        </div>
+                        <div class="w-full p-4 my-3 rounded-md bg-editor.background relative group hover:bg-editorIndentGuide.background cursor-pointer">
+                            <div class="absolute text-activityBarBadge.background top-[50%] translate-y-[-50%] material-icons p-2" style="font-size: 32px;">view_in_ar</div>
+                            <div class="pl-16 font-bold text-2xl">3D Game</div>
+                            <div class="pl-16 font-light text-xl">Create a 3D game project with a default camera setup</div>
+                        </div>
+                        <div class="w-full p-4 my-3 rounded-md bg-editor.background relative group hover:bg-editorIndentGuide.background cursor-pointer">
+                            <div class="absolute text-activityBarBadge.background top-[50%] translate-y-[-50%] material-icons p-2" style="font-size: 32px;">language</div>
+                            <div class="pl-16 font-bold text-2xl">Django website</div>
+                            <div class="pl-16 font-light text-xl">Create a website using the django framework, a database manager and a project manager</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
