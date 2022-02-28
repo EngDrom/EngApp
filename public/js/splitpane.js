@@ -1,53 +1,90 @@
 
 // A function is used for dragging and moving
-function dragElement(element, direction)
+function dragElement(element, reset, direction)
 {
     var   md; // remember mouse down info
     const first  = document.getElementById("first");
     const second = document.getElementById("second");
-    element = element.querySelector("#separator").querySelector(".absolute")
+    const secondChilds = second.childNodes
+    const secondChildsCopy = []
 
-    element.onmousedown = onMouseDown;
+    if (reset) {
+        second.style.width = ""
+        first.style.width = ""
+        second.style.maxWidth = ""
 
-    function onMouseDown(e)
-    {
-        //console.log("mouse down: " + e.clientX);
-        md = {e,
-              offsetLeft:  element.offsetLeft,
-              offsetTop:   element.offsetTop,
-              firstWidth:  first.offsetWidth,
-              secondWidth: second.offsetWidth
-             };
-
-        document.onmousemove = onMouseMove;
-        document.onmouseup = () => {
-            //console.log("mouse up");
-            document.onmousemove = document.onmouseup = null;
-        }
+        secondChilds.forEach((child) => {
+            secondChildsCopy.push(child)
+            second.removeChild(child)
+        })
     }
+    
+    function next() {
+        first.style.width = first.getBoundingClientRect().width + "px"
+        second.style.width = second.getBoundingClientRect().width + "px"
+        second.style.maxWidth = second.getBoundingClientRect().width + "px"
 
-    function onMouseMove(e)
-    {
-        //console.log("mouse move: " + e.clientX);
-        var delta = {x: e.clientX - md.e.clientX,
-                     y: e.clientY - md.e.clientY};
+        if (reset) {
+            secondChildsCopy.forEach((child) => {
+                second.appendChild(child)
+            })
+        }
 
-        if (direction === "H" ) // Horizontal
+        element = element.querySelector("#separator").querySelector(".absolute")
+
+        element.onmousedown = onMouseDown;
+
+        function onMouseDown(e)
         {
-            // Prevent negative-sized elements
-            delta.x = Math.min(Math.max(delta.x, -md.firstWidth),
-                       md.secondWidth);
+            //console.log("mouse down: " + e.clientX);
+            md = {e,
+                offsetLeft:  element.offsetLeft,
+                offsetTop:   element.offsetTop,
+                firstWidth:  first.offsetWidth,
+                secondWidth: second.offsetWidth
+                };
 
-            element.style.left = md.offsetLeft + delta.x + "px";
-            first.style.width = (md.firstWidth + delta.x) + "px";
-            second.style.width = (md.secondWidth - delta.x) + "px";
+            document.onmousemove = onMouseMove;
+            document.onmouseup = () => {
+                //console.log("mouse up");
+                document.onmousemove = document.onmouseup = null;
+            }
+        }
+
+        function onMouseMove(e)
+        {
+            //console.log("mouse move: " + e.clientX);
+            var delta = {x: e.clientX - md.e.clientX,
+                        y: e.clientY - md.e.clientY};
+
+            if (direction === "H" ) // Horizontal
+            {
+                // Prevent negative-sized elements
+                delta.x = Math.min(Math.max(delta.x, -md.firstWidth),
+                        md.secondWidth);
+
+                element.style.left = md.offsetLeft + delta.x + "px";
+                first.style.width = (md.firstWidth + delta.x) + "px";
+                second.style.width = (md.secondWidth - delta.x) + "px";
+                second.style.maxWidth = (md.secondWidth - delta.x) + "px";
+            }
         }
     }
+
+    if (reset)
+        setTimeout(next, 1000)
+    else next()
 }
 
 document.addEventListener('DOMSubtreeModified', function(){
-    document.querySelectorAll('#splitpane').forEach((el) => dragElement(el, "H"))
+    document.querySelectorAll('#splitpane').forEach((el) => dragElement(el, false, "H"))
   });  
 window.addEventListener('DOMContentLoaded', (function(){
-    document.querySelectorAll('#splitpane').forEach((el) => dragElement(el, "H"))
+    document.querySelectorAll('#splitpane').forEach((el) => dragElement(el, true, "H"))
   }));  
+
+
+window.addEventListener('resize', function (ev) {
+    console.log("resize")
+    document.querySelectorAll('#splitpane').forEach((el) => dragElement(el, true, "H"))
+});

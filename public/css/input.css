@@ -42,11 +42,28 @@
     background-color: #6e6868;
 }
 
+.scrollbar-editor::-webkit-scrollbar {
+    background-color: rgb(30 30 30);
+    width: 16px;
+    position: absolute;
+    translate: 50% 0%;
+}
+.scrollbar-editor::-webkit-scrollbar-corner {
+    background-color: rgb(30 30 30);
+}
+.scrollbar-editor::-webkit-scrollbar-thumb {
+    background-color: #979494;
+}
+
 /**
  * Text editor
  */
 .line-container {
     counter-reset: lines;
+}
+
+#file-editor>div {
+    white-space: nowrap;
 }
 
 .line-container>div {
