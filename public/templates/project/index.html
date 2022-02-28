@@ -36,7 +36,7 @@
 
 
 
-        <div class="flex-1 flex" horizontal id="splitpane">
+        <div class="flex-1 flex" horizontal splitpane second_selector="[second_editor]">
             <div class="bg-menu.background overflow-y-auto max-h-screen scrollbar-explorer w-[40%]" id="first">
                 <!-- File explorer -->
                 <div class="font-medium uppercase px-8 p-4 text-explorer.gray">Explorer</div>
@@ -68,14 +68,22 @@
             <div class="h-full" id="separator" >
                 <div class="absolute h-full bg-transparent hover:bg-activityBarBadge.background transition delay-200 duration-300 cursor-w-resize w-2"></div>
             </div>
-            <div class="bg-editor.background max-h-screen w-[60%] max-w-[60%]" id="second">
-                <div class="overflow-auto scrollbar-editor h-screen max-h-screen flex">
+            <div class="bg-editor.background max-h-screen w-[60%] max-w-[60%]" second_editor splitpane vertical first_selector="[first_editor]" second_selector="[second_terminal]" separator="[separator_et]">
+                <div class="overflow-auto scrollbar-editor h-[50%] max-h-[50%] flex" first_editor>
                     <div class="line-container p-2" id="line-container">
                         <div></div>
                     </div>
-                    <div contenteditable id="file-editor" class="scrollbar-editor whitespace-nowrap py-2 flex-1 min-h-screen h-max no-outline no-border">
+                    <div contenteditable id="file-editor" class="scrollbar-editor whitespace-nowrap py-2 flex-1 min-h-full h-max no-outline no-border">
                         
                     </div>
+                </div>
+
+                <div class="w-full relative h-[2px] bg-editor.inactiveSelectionBackground" separator_et>
+                    <div class="absolute w-full bg-transparent hover:bg-activityBarBadge.background transition delay-200 duration-300 cursor-n-resize h-2"></div>
+                </div>
+
+                <div class="h-[calc(50%-2px)]" second_terminal>
+
                 </div>
             </div>
         </div>

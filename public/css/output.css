@@ -517,18 +517,50 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 100%;
 }
 
+.h-\[50\%\] {
+  height: 50%;
+}
+
 .h-max {
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
 }
 
+.h-2 {
+  height: 0.5rem;
+}
+
+.h-1 {
+  height: 0.25rem;
+}
+
+.h-\[calc\(50\%-4px\)\] {
+  height: calc(50% - 4px);
+}
+
+.h-\[1px\] {
+  height: 1px;
+}
+
+.h-\[2px\] {
+  height: 2px;
+}
+
+.h-\[calc\(50\%-2px\)\] {
+  height: calc(50% - 2px);
+}
+
 .max-h-screen {
   max-height: 100vh;
 }
 
-.min-h-screen {
-  min-height: 100vh;
+.max-h-\[50\%\] {
+  max-height: 50%;
+}
+
+.min-h-full {
+  min-height: 100%;
 }
 
 .w-16 {
@@ -543,6 +575,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 100%;
 }
 
+.w-\[40\%\] {
+  width: 40%;
+}
+
 .w-2 {
   width: 0.5rem;
 }
@@ -551,16 +587,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 60%;
 }
 
-.w-\[40\%\] {
-  width: 40%;
-}
-
 .max-w-\[60\%\] {
   max-width: 60%;
-}
-
-.max-w-\[calc\(60\%-16px\)\] {
-  max-width: calc(60% - 16px);
 }
 
 .flex-1 {
@@ -584,6 +612,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   cursor: w-resize;
 }
 
+.cursor-n-resize {
+  cursor: n-resize;
+}
+
 .flex-col {
   flex-direction: column;
 }
@@ -594,10 +626,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .overflow-hidden {
   overflow: hidden;
-}
-
-.overflow-x-auto {
-  overflow-x: auto;
 }
 
 .overflow-y-auto {
@@ -653,6 +681,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .bg-transparent {
   background-color: transparent;
+}
+
+.bg-editor\.inactiveSelectionBackground {
+  --tw-bg-opacity: 1;
+  background-color: rgb(58 61 65 / var(--tw-bg-opacity));
 }
 
 .p-4 {

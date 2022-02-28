@@ -4,7 +4,7 @@
  * 
  * @author LFA
  * 
- * @query "*[splitpane]" : div enabled by default for the split pane system
+ * @query [splitpane] : div enabled by default for the split pane system
  * 
  * @attribute first_selector : target of the first area of the split pane or #first if not found
  *  - used in querySelector API of navigator
@@ -93,12 +93,12 @@ const SplitPaneAPI = (function () {
 
     document.addEventListener('DOMSubtreeModified', function(){
         setTimeout((el)=>{
-            document.querySelectorAll('#splitpane').forEach((el) => dragElement(el))
+            document.querySelectorAll('[splitpane]').forEach((el) => dragElement(el))
         }, 0)
       });  
     window.addEventListener('DOMContentLoaded', (function(){
         setTimeout((el)=>{
-            document.querySelectorAll('#splitpane').forEach((el) => dragElement(el))
+            document.querySelectorAll('[splitpane]').forEach((el) => dragElement(el))
         }, 0)
       })); 
 
@@ -107,98 +107,3 @@ const SplitPaneAPI = (function () {
         subscribe, unsubscribe
     }
 })();
-
-
-/** Split pane V1
-
-// A function is used for dragging and moving
-function dragElement(element, reset, direction)
-{
-    var   md; // remember mouse down info
-    const first  = element.querySelector("#first");
-    const second = element.querySelector("#second");
-    const secondChilds = second.childNodes
-    const secondChildsCopy = []
-
-    if (reset) {
-        second.style.width = ""
-        first.style.width = ""
-        second.style.maxWidth = ""
-
-        secondChilds.forEach((child) => {
-            secondChildsCopy.push(child)
-            second.removeChild(child)
-        })
-    }
-    
-    function next() {
-        first.style.width = first.getBoundingClientRect().width + "px"
-        second.style.width = second.getBoundingClientRect().width + "px"
-        second.style.maxWidth = second.getBoundingClientRect().width + "px"
-
-        if (reset) {
-            secondChildsCopy.forEach((child) => {
-                second.appendChild(child)
-            })
-        }
-
-        element = element.querySelector("#separator").querySelector(".absolute")
-
-        element.onmousedown = onMouseDown;
-
-        function onMouseDown(e)
-        {
-            //console.log("mouse down: " + e.clientX);
-            md = {e,
-                offsetLeft:  element.offsetLeft,
-                offsetTop:   element.offsetTop,
-                firstWidth:  first.offsetWidth,
-                secondWidth: second.offsetWidth
-                };
-
-            document.onmousemove = onMouseMove;
-            document.onmouseup = () => {
-                //console.log("mouse up");
-                document.onmousemove = document.onmouseup = null;
-            }
-        }
-
-        function onMouseMove(e)
-        {
-            //console.log("mouse move: " + e.clientX);
-            var delta = {x: e.clientX - md.e.clientX,
-                        y: e.clientY - md.e.clientY};
-
-            if (direction === "H" ) // Horizontal
-            {
-                // Prevent negative-sized elements
-                delta.x = Math.min(Math.max(delta.x, -md.firstWidth),
-                        md.secondWidth);
-
-                element.style.left = md.offsetLeft + delta.x + "px";
-                first.style.width = (md.firstWidth + delta.x) + "px";
-                second.style.width = (md.secondWidth - delta.x) + "px";
-                second.style.maxWidth = (md.secondWidth - delta.x) + "px";
-            }
-        }
-    }
-
-    if (reset)
-        setTimeout(next, 1000)
-    else next()
-}
-
-document.addEventListener('DOMSubtreeModified', function(){
-    document.querySelectorAll('#splitpane').forEach((el) => dragElement(el, false, "H"))
-  });  
-window.addEventListener('DOMContentLoaded', (function(){
-    document.querySelectorAll('#splitpane').forEach((el) => dragElement(el, true, "H"))
-  }));  
-
-
-window.addEventListener('resize', function (ev) {
-    console.log("resize")
-    document.querySelectorAll('#splitpane').forEach((el) => dragElement(el, true, "H"))
-});
-
- */
