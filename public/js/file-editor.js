@@ -31,6 +31,20 @@ EditorPaneAPI = (function () {
         }
         return count;
     }
+    function escape(htmlStr) {
+        return htmlStr. replace(/&/g, "&amp;")
+        . replace(/</g, "&lt;")
+        . replace(/>/g, "&gt;")
+        . replace(/"/g, "&quot;")
+        . replace(/'/g, "&#39;");
+    }
+    function unescape(htmlStr) {
+        return htmlStr. replace(/&amp;/g, "&")
+        . replace(/&lt;/g, "<")
+        . replace(/&gt;/g, ">")
+        . replace(/&quot;/g, "\"")
+        . replace(/&#39/g, "\'");
+    }
 
 
 
@@ -141,6 +155,11 @@ EditorPaneAPI = (function () {
 
         page.child.classList = "group flex bg-editor.background px-2 cursor-pointer"
         page.child.querySelector(".m-2").classList = "m-2 p-1 material-icons rounded-md hover:bg-sideBarIcons.background"
+    
+        const lines = page.text.split("\n")
+
+        container.subelements.editor_div.innerHTML = "<div>" + lines.map((x) => x.trim() == '' ? '<br>' + x : escape(x)).join("</div><div>") + "</div>"
+        container.subelements.editor_div.dispatchEvent(new CustomEvent("input"))
     }
 
     /**
@@ -154,6 +173,12 @@ EditorPaneAPI = (function () {
         if (container == undefined) return ;
 
         let page = container.tabs[page_path]
+        if (page_path == container.page) {
+            let HTML = container.subelements.editor_div.innerHTML;
+            HTML = HTML.substring(5, HTML.length - 6)
+            const lines = HTML.replace(/<br>/g, '').split('</div><div>')
+            page.text = (lines.map(unescape)).join("\n")
+        }
 
         page.child.classList = "group flex bg-sideBarIcons.background px-2 cursor-pointer"
         page.child.querySelector(".m-2").classList = "m-2 p-1 material-icons rounded-md text-sideBarIcons.background group-hover:text-editorIndentGuide.activeBackground hover:bg-menu.background"
