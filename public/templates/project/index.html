@@ -69,24 +69,24 @@
                 <div class="absolute h-full bg-transparent hover:bg-activityBarBadge.background transition delay-200 duration-300 cursor-w-resize w-2"></div>
             </div>
             <div class="bg-editor.background max-h-screen w-[60%] max-w-[60%]" second_editor splitpane vertical first_selector="[first_editor]" second_selector="[second_terminal]" separator="[separator_et]">
-                <div class="h-[50%] max-h-[50%]" first_editor>
-                    <div class="h-12 w-full bg-menu.background flex">
-                        <div class="group flex bg-editor.background px-2 cursor-pointer">
+                <div class="h-[50%] max-h-[50%] max-w-full" first_editor editor>
+                    <div class="h-12 overflow-x-scroll w-full bg-menu.background flex max-w-full" tabs>
+                        <div class="hidden group flex bg-editor.background px-2 cursor-pointer">
                             <div class="p-3 material-icons">code</div>
                             <p class="align-middle h-min relative top-[50%] translate-y-[-50%]">file.ext</p>
                             <div class="m-2 p-1 material-icons rounded-md hover:bg-sideBarIcons.background">close</div>
                         </div>
-                        <div class="group flex bg-sideBarIcons.background px-2 cursor-pointer">
+                        <div class="hidden group flex bg-sideBarIcons.background px-2 cursor-pointer">
                             <div class="p-3 material-icons">code</div>
                             <p class="align-middle h-min relative top-[50%] translate-y-[-50%]">file2.ext</p>
                             <div class="m-2 p-1 material-icons rounded-md text-sideBarIcons.background group-hover:text-editorIndentGuide.activeBackground hover:bg-menu.background">close</div>
                         </div>
                     </div>
                     <div class="overflow-auto scrollbar-editor flex h-[calc(100%-48px)]">
-                        <div class="line-container p-2" id="line-container">
+                        <div class="line-container p-2" id="line-container" lines>
                             <div></div>
                         </div>
-                        <div contenteditable id="file-editor" class="scrollbar-editor whitespace-nowrap py-2 flex-1 min-h-full h-max no-outline no-border">
+                        <div contenteditable id="file-editor" class="scrollbar-editor whitespace-nowrap py-2 flex-1 min-h-full h-max no-outline no-border" editable>
                             
                         </div>
                     </div>
