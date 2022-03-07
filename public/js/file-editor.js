@@ -191,8 +191,7 @@ EditorPaneAPI = (function () {
         page.child.querySelector(".m-2").classList = "m-2 p-1 material-icons rounded-md hover:bg-sideBarIcons.background"
     
         const lines = page.text.split("\n")
-
-        container.subelements.editor_div.innerHTML = "<div>" + lines.map((x) => x.trim() == '' ? '<br>' + x : escape(x)).join("</div><div>") + "</div>"
+        container.subelements.editor_div.innerHTML = "<div>" + escape(page.text).replace(/\n/g, "</div><div>") + "</div>"
         container.subelements.editor_div.dispatchEvent(new CustomEvent("input"))
     }
 

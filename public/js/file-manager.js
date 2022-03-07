@@ -87,8 +87,12 @@ function openFile (event) {
 }
 
 document.addEventListener('DOMSubtreeModified', function(){
-    document.querySelectorAll('#file-folder').forEach((el) => el.onclick = toggleFolder)
-    document.querySelectorAll('#file-file').forEach((el) => el.onclick = openFile)
+    document.querySelectorAll('#file-folder').forEach((el) => {
+        el.onclick = el.onclick == undefined ? toggleFolder : el.onclick
+    })
+    document.querySelectorAll('#file-file').forEach((el) => {
+        el.onclick = el.onclick == undefined ? openFile : el.onclick
+    })
   });  
 window.addEventListener('DOMContentLoaded', (function(){
     document.querySelectorAll('#file-folder').forEach((el) => el.onclick = toggleFolder)
