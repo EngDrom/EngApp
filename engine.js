@@ -27,6 +27,9 @@ const createWindow = () => {
 
     process.env.APP = app
     process.env.EJS_CONTEXT = JSON.stringify({"age": 12, "healthy": true})
+    ipcMain.postMessage = (channel, ...args) => {
+      win.webContents.postMessage(channel, ...args)
+    }
     win.loadFile(path.join(__dirname, 'public/templates/index.html'))
 }
 
@@ -63,4 +66,19 @@ ipcMain.on('read_tree', (event, ...args) => {
   let project = args[0]
   
   event.reply('read_tree', JSON.stringify(readdir(project)))
+})
+ipcMain.on('engine:file:save', (event, ...args) => {
+  let project = args[0]
+  let file = args[1]
+  let text = args[2]
+
+  fs.writeFileSync(path.join(project, file), text)
+})
+ipcMain.on('engine:file:read', (event, ...args) => {
+  let project = args[0]
+  let file = args[1]
+
+  let text = fs.readFileSync(path.join(project, file), 'utf-8').toString()
+
+  event.reply('file:read', file, text)
 })

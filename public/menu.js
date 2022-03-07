@@ -1,4 +1,4 @@
-const { app, Menu, ipcRenderer } = require('electron')
+const { app, Menu, ipcRenderer, ipcMain } = require('electron')
 
 const template = [
     {
@@ -7,7 +7,9 @@ const template = [
             { id: 'project:open', label: 'Open project...', accelerator: 'CommandORControl+Shift+O', click: () => {app.WINDOW.loadFile('./public/templates/index.html')} },
             { type: 'separator' },
             { id: 'file:open', label: 'Open', accelerator: 'CommandORControl+O', click: () => {} },
-            { id: 'file:save', label: 'Save', accelerator: 'CommandORControl+S', click: () => {} },
+            { id: 'file:save', label: 'Save', accelerator: 'CommandORControl+S', click: () => {
+                ipcMain.postMessage('shortcut', 'file:save')
+            } },
             { type: 'separator' },
             { id: 'user:pref', label: 'User Preferences', click: () => {} }
         ]

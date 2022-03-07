@@ -30,9 +30,10 @@ window.api.send("read_tree", project)
 function build_tree (tree_data, depth=0) {
     let child = document.createElement("div")
     child.classList.add("cursor-pointer")
+    child.setAttribute("tree_path", tree_data.path)
 
     child.innerHTML = `
-<div class="flex" style="padding-left: ${12 * depth + 16}px;" ${tree_data.is_dir ? `id="file-folder"` : ""}>
+<div class="flex" style="padding-left: ${12 * depth + 16}px;" ${tree_data.is_dir ? `id="file-folder"` : `id="file-file"`}>
     <div class="material-icons ${get_icon_color(tree_data)}" style="font-size: ${get_font_size(tree_data)}px; padding-left: ${12 - get_font_size(tree_data) / 2}px; padding-right: ${16 - get_font_size(tree_data) / 2}px; padding-top: ${13 - get_font_size(tree_data) / 2}px; padding-bottom: ${12 - get_font_size(tree_data) / 2}px;" id="icon">${tree_data.is_dir ? "chevron_right" : get_icon(tree_data)}</div>
     <div class="text-xl">${(tree_data.name == "." || tree_data.path == project_path) ? project_name : tree_data.name}</div>
 </div>
@@ -77,10 +78,19 @@ function toggleFolder (folder) {
     })
 }
 
+function openFile (event) {
+    let target = event.target
+    while (target.id != "file-file") target = target.parentNode;
+
+    let path = target.parentNode.getAttribute("tree_path")
+    window.api.send("engine:file:read", project, path)
+}
 
 document.addEventListener('DOMSubtreeModified', function(){
     document.querySelectorAll('#file-folder').forEach((el) => el.onclick = toggleFolder)
+    document.querySelectorAll('#file-file').forEach((el) => el.onclick = openFile)
   });  
 window.addEventListener('DOMContentLoaded', (function(){
     document.querySelectorAll('#file-folder').forEach((el) => el.onclick = toggleFolder)
+    document.querySelectorAll('#file-file').forEach((el) => el.onclick = openFile)
   }));
