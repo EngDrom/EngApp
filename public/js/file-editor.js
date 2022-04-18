@@ -173,6 +173,29 @@ EditorPaneAPI = (function () {
      */
     function close_page (idx, page_path) {
 
+
+        let container = container_by_id[idx]
+        let page = container.tabs[page_path]
+
+        let alternative = undefined
+        for (let key of Object.keys(container.tabs)) {
+            if (container.tabs[key] && key != page_path) {
+                alternative = key;
+                break;
+            }
+        }
+
+        if (alternative == undefined) return ;
+
+        let child = page.child
+        child.onclick = undefined
+        child.parentNode.removeChild(child)
+
+        if (container.page == page_path) {
+            focus_page(idx, alternative)
+        }
+
+        container.tabs[page_path] = undefined
     }
 
     /**
@@ -243,7 +266,7 @@ EditorPaneAPI = (function () {
         child.innerHTML = `
             <div class="p-3 material-icons">code</div>
             <p class="align-middle h-min relative top-[50%] translate-y-[-50%]" page_name>${page_name}</p>
-            <div class="m-2 p-1 material-icons rounded-md text-sideBarIcons.background group-hover:text-editorIndentGuide.activeBackground hover:bg-menu.background">close</div>
+            <div close-tab class="m-2 p-1 material-icons rounded-md text-sideBarIcons.background group-hover:text-editorIndentGuide.activeBackground hover:bg-menu.background">close</div>
         `
 
         container.tabs[page_path] = {
@@ -257,6 +280,9 @@ EditorPaneAPI = (function () {
         container.subelements.file_tab_div.appendChild(child)
         child.onclick = (ev) => {
             focus_page(idx, page_path)
+        }
+        child.querySelector('[close-tab]').onclick = (ev) => {
+            close_page(idx, page_path)
         }
 
         if (container.page == -1) focus_page(idx, page_path)
