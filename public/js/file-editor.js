@@ -34,6 +34,7 @@ EditorPaneAPI = (function () {
                 chr_idx += 1;
             }
         }
+        
         return count;
     }
     /**
@@ -130,9 +131,9 @@ EditorPaneAPI = (function () {
                 }
             }
 
-            let numberLine = countLines(ctx.subelements.editor_div.innerText)
+            let numberLine = ctx.subelements.editor_div.querySelectorAll("div>div").length
             let currentNumber = ctx.subelements.editor_lines.querySelectorAll("div>div").length
-    
+
             let container = ctx.subelements.editor_lines;
             let delta = numberLine - currentNumber
             if (delta > 0) {
@@ -199,8 +200,11 @@ EditorPaneAPI = (function () {
      * Save a page and get the text out of the editor
      */
     function save_page ( container, page ) {
-        let HTML = container.subelements.editor_div.innerText;
-        page.text = removeDuplicateLines(HTML)
+        let HTMLArr = []
+        container.subelements.editor_div.querySelectorAll('div>div').forEach((el) => {
+            HTMLArr.push(el.innerText.split('\n').join('').split(' ').join(' '));
+        });
+        page.text = HTMLArr.join('\n')
     }
 
     /**
@@ -276,7 +280,7 @@ EditorPaneAPI = (function () {
                     let tab = container.tabs[page]
                     let text = tab.text
 
-                    window.api.send("engine:file:save", project, tab.page_path, text)
+                    window.api.send("engine:file:save", project, tab.path, text)
                 }
             }
         }

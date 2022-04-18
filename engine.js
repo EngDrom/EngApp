@@ -68,6 +68,8 @@ ipcMain.on('read_tree', (event, ...args) => {
   event.reply('read_tree', JSON.stringify(readdir(project)))
 })
 ipcMain.on('engine:file:save', (event, ...args) => {
+  console.log(event)
+  console.log(args)
   let project = args[0]
   let file = args[1]
   let text = args[2]

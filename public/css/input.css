@@ -64,6 +64,7 @@
 
 #file-editor>div {
     white-space: nowrap;
+    height: 24px;
 }
 
 .line-container>div {

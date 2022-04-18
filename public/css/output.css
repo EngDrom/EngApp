@@ -484,16 +484,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   top: 50%;
 }
 
-.m-4 {
-  margin: 1rem;
-}
-
 .m-2 {
   margin: 0.5rem;
-}
-
-.m-1 {
-  margin: 0.25rem;
 }
 
 .my-3 {
@@ -533,8 +525,18 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 50%;
 }
 
-.h-\[calc\(100\%-64px\)\] {
-  height: calc(100% - 64px);
+.h-12 {
+  height: 3rem;
+}
+
+.h-min {
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+}
+
+.h-\[calc\(100\%-48px\)\] {
+  height: calc(100% - 48px);
 }
 
 .h-max {
@@ -553,28 +555,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .h-\[calc\(50\%-2px\)\] {
   height: calc(50% - 2px);
-}
-
-.h-8 {
-  height: 2rem;
-}
-
-.h-\[calc\(100\%-32px\)\] {
-  height: calc(100% - 32px);
-}
-
-.h-12 {
-  height: 3rem;
-}
-
-.h-\[calc\(100\%-48px\)\] {
-  height: calc(100% - 48px);
-}
-
-.h-min {
-  height: -webkit-min-content;
-  height: -moz-min-content;
-  height: min-content;
 }
 
 .max-h-screen {
@@ -666,6 +646,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   overflow-y: auto;
 }
 
+.overflow-x-scroll {
+  overflow-x: scroll;
+}
+
 .whitespace-nowrap {
   white-space: nowrap;
 }
@@ -722,16 +706,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(58 61 65 / var(--tw-bg-opacity));
 }
 
-.bg-\[rgb\(37\2c 37\2c 38\)\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(37 37 38 / var(--tw-bg-opacity));
-}
-
-.bg-explorer\.gray {
-  --tw-bg-opacity: 1;
-  background-color: rgb(187 187 187 / var(--tw-bg-opacity));
-}
-
 .p-4 {
   padding: 1rem;
 }
@@ -767,6 +741,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-right: 1rem;
 }
 
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
 .py-2 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -775,16 +754,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
-}
-
-.px-2 {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-}
-
-.py-3 {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
 }
 
 .pb-3 {
@@ -832,11 +801,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .text-xl {
   font-size: 1.25rem;
-  line-height: 1.75rem;
-}
-
-.text-lg {
-  font-size: 1.125rem;
   line-height: 1.75rem;
 }
 
@@ -911,14 +875,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   color: rgb(21 128 61 / var(--tw-text-opacity));
 }
 
-.text-gray-500 {
-  --tw-text-opacity: 1;
-  color: rgb(107 114 128 / var(--tw-text-opacity));
-}
-
 .text-sideBarIcons\.background {
   --tw-text-opacity: 1;
   color: rgb(51 51 51 / var(--tw-text-opacity));
+}
+
+.text-gray-500 {
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
 }
 
 .underline {
@@ -1021,6 +985,7 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 #file-editor>div {
   white-space: nowrap;
+  height: 24px;
 }
 
 .line-container>div {
@@ -1056,14 +1021,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(0 122 204 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-menu\.background:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(37 37 38 / var(--tw-bg-opacity));
-}
-
 .hover\:bg-sideBarIcons\.background:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(51 51 51 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-menu\.background:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(37 37 38 / var(--tw-bg-opacity));
 }
 
 .hover\:text-gray-50:hover {
@@ -1071,17 +1036,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   color: rgb(249 250 251 / var(--tw-text-opacity));
 }
 
-.group:hover .group-hover\:visible {
-  visibility: visible;
-}
-
 .group:hover .group-hover\:block {
   display: block;
-}
-
-.group:hover .group-hover\:text-editor\.inactiveSelectionBackground {
-  --tw-text-opacity: 1;
-  color: rgb(58 61 65 / var(--tw-text-opacity));
 }
 
 .group:hover .group-hover\:text-editorIndentGuide\.activeBackground {
